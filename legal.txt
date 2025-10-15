@@ -1,0 +1,10 @@
+All cables core code is licenced under the MIT licence
+
+Some ops may be using code from contributors or external libraries under different licences.
+
+Additional code from contributors and libraries in this export are licenced as follows:
+
+Apache:
+
+- mediapipe hands (https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js)
+- mediapipe pose (https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js)
