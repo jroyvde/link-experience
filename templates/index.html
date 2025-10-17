@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Translator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Conversation Translator</h1>
+            <button id="record-btn" class="record-btn">
+                <i id="record-icon" class="fas fa-microphone"></i>
+            </button>
+        </div>
+        
+        <!-- This is the new chat history container -->
+        <div id="chat-container" class="chat-container">
+            <!-- Messages will be added here dynamically -->
+            <div class="status-message">Press the microphone and start speaking to begin your conversation.</div>
+        </div>
+
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

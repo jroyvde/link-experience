@@ -1,0 +1,88 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    background-color: white;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column; /* Arrange header and chat vertically */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.record-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.record-btn.is-listening {
+    background-color: #dc3545;
+}
+
+.chat-container {
+    flex-grow: 1; /* Make the chat container fill available space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 1rem 0;
+}
+
+.status-message {
+    color: #888;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Chat bubble styling */
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Respect newlines from the API */
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto; /* Align to the right */
+    border-bottom-right-radius: 4px;
+}
+
+.translator-message {
+    background-color: #e9e9eb;
+    color: #333;
+    margin-right: auto; /* Align to the left */
+    border-bottom-left-radius: 4px;
+}
