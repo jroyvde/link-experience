@@ -53,7 +53,14 @@ def translate_text():
 
     # THE CORE CHANGE: Using your powerful new prompt
     prompt = f"""
-I want you to act as a translator. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English and Japanese with bullet points. Keep the meaning same. I want you to only reply the correction, the improvements and nothing else, do not write explanations. Do you understand?
+I want you to act as a translator. 
+I will speak to you in any language and you will detect the language, translate it and answer in the corrected version of my text, 
+in the original and translated language. Keep the meaning same. 
+The first line of your response should be in the original language, corrected for mistakes. 
+The second line of your response should be the Japanese translation. 
+(Unless the original language is Japanese, in which case the second line should be an English translation.) 
+I want you to only reply the correction, the translation, and nothing else, do not write explanations. 
+Do you understand?
 
 My text is: "{recognized_text}"
 """
