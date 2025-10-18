@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function getTranslation(text) {
+    function getTranslation(text, callback) {
         fetch('/translate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -61,16 +61,32 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.error) {
-                appendMessage('translator', `Error: ${data.error}`);
+            if (typeof callback === 'function') {
+                callback(data);
             } else {
-                appendMessage('translator', data.translated_text);
+                if (data.error) {
+                    appendMessage('translator', `Error: ${data.error}`);
+                } else {
+                    appendMessage('translator', data.translated_text);
+                }
             }
         })
         .catch(error => {
             console.error('Translation fetch error:', error);
-            appendMessage('translator', 'Error connecting to the server.');
+            if (typeof callback === 'function') {
+                callback({ error: 'Error connecting to the server.' });
+            } else {
+                appendMessage('translator', 'Error connecting to the server.');
+            }
         });
+    }
+
+    // Export getTranslation for module use and global access
+    if (typeof window !== 'undefined') {
+        window.getTranslation = getTranslation;
+    }
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = { getTranslation };
     }
 
     function appendMessage(sender, text) {
