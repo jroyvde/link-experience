@@ -59,7 +59,7 @@ recordBtn.addEventListener('click', () => {
     }
 });
 
-export function getTranslation(text, callback) {
+function getTranslation(text, callback) {
     fetch('/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -102,15 +102,15 @@ export function getTranslation(text, callback) {
     });
 }
 
-// // Export getTranslation for module use and global access
-// if (typeof window !== 'undefined') {
-//     window.getTranslation = getTranslation;
-//     console.log("Decided not to export.")
-// }
-// if (typeof module !== 'undefined' && module.exports) {
-//     module.exports = { getTranslation };
-//     console.log("Decided to export!")
-// }
+// Export getTranslation for module use and global access
+if (typeof window !== 'undefined') {
+    window.getTranslation = getTranslation;
+    console.log("Decided not to export.")
+}
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { getTranslation };
+    console.log("Decided to export!")
+}
 
 function appendMessage(sender, text) {
     const messageBubble = document.createElement('div');
