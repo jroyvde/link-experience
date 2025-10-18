@@ -5,7 +5,7 @@
 //   - createRecognizer(options) -> { start(), stop(), isListening, destroy(), setCallbacks() }
 
 export const defaultConfig = {
-    translateEndpoint: '/translate',
+    translateEndpoint: "https://yptox.pythonanywhere.com/translate",
     interimResults: false,
     continuous: true,
     lang: undefined,
