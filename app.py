@@ -34,7 +34,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/translate.html')
-def index():
+def translate():
     return render_template('translate.html')
 
 # The top of your app.py file stays the same...
