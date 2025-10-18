@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (result && result.error) {
                         appendMessage('translator', `Error: ${result.error}`);
                     } else {
-                        appendMessage('translator', `${result.translated}`);
+                        appendMessage('translator', `${result.untranslated}\n${result.translated}`);
                     }
                 });
             }
