@@ -117,10 +117,10 @@ export function createRecognizer(options = {}) {
     };
 }
 
-// Provide a default export and a window fallback for loader compatibility
+// Provide a default export and window fallbacks for loader compatibility
 const TL = { getTranslation, createRecognizer, defaultConfig };
 export default TL;
 if (typeof window !== 'undefined') {
-    // maintain the previous global for backwards compatibility
     window.TranslatorModule = TL;
+    window.TL = TL;
 }
