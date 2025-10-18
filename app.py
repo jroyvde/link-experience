@@ -8,7 +8,7 @@ import vertexai
 from vertexai.generative_models import GenerativeModel
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-CORS(app, origins=["https://cables.gl"])
+CORS(app, origins=["https://sandbox.cables.gl"])
 
 try:
     credentials_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
