@@ -61,49 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function getTranslation(text, callback) {
-        fetch('/translate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (typeof callback === 'function') {
-                if (data.error) {
-                    callback({ error: data.error });
-                } else {
-                    // Split translated_text into two lines
-                    let original = '';
-                    let translated = '';
-                    if (typeof data.translated_text === 'string') {
-                        const parts = data.translated_text.split(/\r?\n/);
-                        original = parts[0] || '';
-                        translated = parts[1] || '';
-                    }
-                    callback({
-                        original,
-                        translated
-                    });
-                }
-            } else {
-                if (data.error) {
-                    appendMessage('translator', `Error: ${data.error}`);
-                } else {
-                    appendMessage('translator', data.translated_text);
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Translation fetch error:', error);
-            if (typeof callback === 'function') {
-                callback({ error: 'Error connecting to the server.' });
-            } else {
-                appendMessage('translator', 'Error connecting to the server.');
-            }
-        });
-    }
-
     function appendMessage(sender, text) {
         const messageBubble = document.createElement('div');
         messageBubble.classList.add('message-bubble');
