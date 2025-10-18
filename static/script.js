@@ -1,4 +1,3 @@
-
 import { createRecognizer, getTranslation } from './translation.js';
 
 document.addEventListener('DOMContentLoaded', () => {
