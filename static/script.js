@@ -1,4 +1,4 @@
-import { createRecognizer, getTranslation } from './translation.js';
+import * as TL from "./translation.js"
 
 document.addEventListener('DOMContentLoaded', () => {
     const recordBtn = document.getElementById('record-btn');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let recognizer = null;
     let isListening = false;
 
-    recognizer = createRecognizer({
+    recognizer = TL.createRecognizer({
         interimResults: false,
         continuous: true,
         onInterim: (text) => {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const recognizedText = (finalText || '').trim();
             if (recognizedText) {
                 appendMessage('user', recognizedText);
-                getTranslation(recognizedText).then(result => {
+                TL.getTranslation(recognizedText).then(result => {
                     if (result && result.error) {
                         appendMessage('translator', `Error: ${result.error}`);
                     } else {
