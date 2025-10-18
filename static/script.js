@@ -14,7 +14,6 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 if (!SpeechRecognition) {
     appendMessage('status', "Sorry, your browser doesn't support Speech Recognition.");
     recordBtn.disabled = true;
-    return;
 }
 
 const recognition = new SpeechRecognition();
