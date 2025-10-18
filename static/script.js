@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Translation script.js is running!")
+
     const recordBtn = document.getElementById('record-btn');
     const recordIcon = document.getElementById('record-icon');
     const chatContainer = document.getElementById('chat-container');
@@ -62,7 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (typeof callback === 'function') {
-                callback(data);
+                if (data.error) {
+                    callback({ error: data.error });
+                } else {
+                    // Split translated_text into two lines
+                    let original = '';
+                    let translated = '';
+                    if (typeof data.translated_text === 'string') {
+                        const parts = data.translated_text.split(/\r?\n/);
+                        original = parts[0] || '';
+                        translated = parts[1] || '';
+                    }
+                    callback({
+                        original,
+                        translated
+                    });
+                }
             } else {
                 if (data.error) {
                     appendMessage('translator', `Error: ${data.error}`);
@@ -84,9 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Export getTranslation for module use and global access
     if (typeof window !== 'undefined') {
         window.getTranslation = getTranslation;
+        console.log("Decided not to export.")
     }
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = { getTranslation };
+        console.log("Decided to export!")
     }
 
     function appendMessage(sender, text) {
