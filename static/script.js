@@ -1,21 +1,15 @@
+
+import { createRecognizer, getTranslation } from './translation.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const recordBtn = document.getElementById('record-btn');
     const recordIcon = document.getElementById('record-icon');
     const chatContainer = document.getElementById('chat-container');
 
-    // Prefer using the TranslatorModule if available
-    const TM = (typeof window !== 'undefined' && window.TranslatorModule) ? window.TranslatorModule : null;
     let recognizer = null;
     let isListening = false;
 
-    if (!TM) {
-        appendMessage('status', "Translator module not found; falling back to simple page-only behavior.");
-        recordBtn.disabled = true;
-        return;
-    }
-
-    // create a recognizer with callbacks wired to the page
-    recognizer = TM.createRecognizer({
+    recognizer = createRecognizer({
         interimResults: false,
         continuous: true,
         onInterim: (text) => {
@@ -25,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const recognizedText = (finalText || '').trim();
             if (recognizedText) {
                 appendMessage('user', recognizedText);
-                TM.getTranslation(recognizedText).then(result => {
+                getTranslation(recognizedText).then(result => {
                     if (result && result.error) {
                         appendMessage('translator', `Error: ${result.error}`);
                     } else {
