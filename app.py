@@ -33,6 +33,10 @@ except Exception as e:
 def index():
     return render_template('index.html')
 
+@app.route('/translate.html')
+def index():
+    return render_template('translate.html')
+
 # The top of your app.py file stays the same...
 
 @app.route('/translate', methods=['POST'])
