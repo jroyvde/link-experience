@@ -2,11 +2,13 @@
 import os
 import json
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 
 import vertexai
 from vertexai.generative_models import GenerativeModel
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
+CORS(app, origins=["https://cables.gl"])
 
 try:
     credentials_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
