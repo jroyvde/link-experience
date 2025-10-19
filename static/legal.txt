@@ -6,5 +6,5 @@ Additional code from contributors and libraries in this export are licenced as f
 
 Apache:
 
-- mediapipe hands (https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js)
 - mediapipe pose (https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js)
+- mediapipe camera (https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js)
