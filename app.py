@@ -62,7 +62,6 @@ The first line of your response should be in the original language, corrected fo
 The second line of your response should be the Japanese translation. 
 (Unless the original language is Japanese, in which case the second line should be an English translation.) 
 I want you to only reply the correction, the translation, and nothing else, do not write explanations. 
-Do you understand?
 
 My text is: "{recognized_text}"
 """
